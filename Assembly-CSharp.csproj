@@ -58,6 +58,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\Scripts\FiringPoint.cs" />
+    <Compile Include="Assets\Scripts\Projectile.cs" />
+    <Compile Include="Assets\Scripts\Doors.cs" />
+    <Compile Include="Assets\Scripts\TriggerPad.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Particles\Shaders\RotoParticleAdditive.shader" />
