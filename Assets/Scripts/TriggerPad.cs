@@ -29,3 +29,4 @@ public class TriggerPad : MonoBehaviour
         triggeredObject.gameObject.GetComponent<Renderer>().material.color = Color.white;
     }
 }
+*/
