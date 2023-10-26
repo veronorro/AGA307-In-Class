@@ -3,6 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType
+{
+    OneHand,
+    TwoHand,
+    Archer
+}
+
+public enum PatrolType
+{
+    Linear,
+    Random,
+    Loop
+}
+
 public class EnemyManager : MonoBehaviour
 {
     public Transform[] spawnPoints;
@@ -20,6 +34,9 @@ public class EnemyManager : MonoBehaviour
         //SpawnEnemies();
 
         SpawnAtRandom();
+
+        StartCoroutine(SpawnDelay());
+
     }
 
     private void Update()
@@ -58,6 +75,22 @@ public class EnemyManager : MonoBehaviour
         Instantiate(enemyTypes[rnd], spawnPoints[rnd].position, spawnPoints[rnd].rotation);
         enemies.Add(enemy);
         ShowEnemyCount(); 
+    }
+
+    /// <summary>
+    /// Spawns enemy at a 2 second delay
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator SpawnDelay()
+    {
+
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            int rnd = Random.Range(0, enemyTypes.Length);
+            Instantiate(enemyTypes[rnd], spawnPoints[rnd].position, spawnPoints[rnd].rotation);
+            yield return new WaitForSeconds(2);
+        }
+        
     }
 
     /// <summary>
@@ -105,6 +138,15 @@ public class EnemyManager : MonoBehaviour
         }
     }
  
+    /// <summary>
+    /// Returns a random spawn point. Ref for enemy script.
+    /// </summary>
+    /// <returns></returns>
+    public Transform GetRandomSpawnPoint()
+    {
+        return spawnPoints[Random.Range(0, spawnPoints.Length)];
+    }
+
     /// <summary>
     /// All example code from class
     /// </summary>
