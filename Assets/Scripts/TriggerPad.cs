@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
+
 public class TriggerPad : MonoBehaviour
 {
     
@@ -29,4 +29,3 @@ public class TriggerPad : MonoBehaviour
         triggeredObject.gameObject.GetComponent<Renderer>().material.color = Color.white;
     }
 }
-*/

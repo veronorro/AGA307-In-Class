@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    
+    public int damage = 20;
+
     void Start()
     {
         Destroy(this.gameObject,5);

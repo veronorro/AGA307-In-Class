@@ -1,31 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : GameBehaviour 
 {
+    public static event Action<GameObject> OnEnemyHit = null;
+    public static event Action<GameObject> OnEnemyDie = null;
+    
 
     public PatrolType myPatrol;
     public float moveDistance = 1000;
     float baseSpeed = 1f;
     public float mySpeed = 1f;
-    int baseHealth = 10;
+    int baseHealth = 100;
     public int enemyHealth;
+    public int myScore; 
 
     [Header("AI")] 
     public EnemyType myType;
-    public Transform moveToPos; //needed for all patrols
-    public EnemyManager _EM;
-    Transform startPos;         //needed for loop patrol movement
+    public Transform moveToPos;     //needed for all patrols
+    Transform startPos;             //needed for loop patrol movement
     Transform endPos; 
     bool reverse;
-    int patrolPoint = 0; //needed for linear patrol movement
+    int patrolPoint = 0;            //needed for linear patrol movement
 
 
     void Start()
     {
-        _EM = FindObjectOfType<EnemyManager>();
+ 
 
         switch (myType)
         {
@@ -33,18 +37,22 @@ public class Enemy : MonoBehaviour
                 enemyHealth = baseHealth;
                 mySpeed = baseSpeed;
                 myPatrol = PatrolType.Linear;
+                myScore = 100;
                 break;
 
             case EnemyType.TwoHand:
                 enemyHealth = baseHealth * 2;
                 mySpeed = baseSpeed;
                 myPatrol = PatrolType.Random;
+                myScore = 170;
                 break;
+
 
             case EnemyType.Archer:
                 enemyHealth = baseHealth * 3;
                 mySpeed = baseSpeed * 2;
                 myPatrol = PatrolType.Loop;
+                myScore = 270;
                 break;
         }
 
@@ -53,7 +61,6 @@ public class Enemy : MonoBehaviour
 
     void SetUpAI()
     {
-        _EM = FindObjectOfType<EnemyManager>();
         startPos = Instantiate(new GameObject(), transform.position, transform.rotation).transform;
         endPos = _EM.GetRandomSpawnPoint();
         moveToPos = endPos;
@@ -107,5 +114,43 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(1, 3));
         StartCoroutine(Move());
         */
+
+    /// <summary>
+    /// Enemy HIt Points. Enemies take damage then die.
+    /// </summary>
+    /// <param name="_damage"></param>
+    public void Hit(int _damage)
+    {
+
+        _GM.AddSCore(myScore);
+        enemyHealth -= _damage;
+        ScaleObject(this.gameObject, transform.localScale * 1.5f);
+        if (enemyHealth <= 0)
+        {
+            Die();
+         
+        }
+        else
+        {
+            OnEnemyHit?.Invoke(this.gameObject);
+          //_GM.AddSCore(myScore);
+        }
+
+    }
+
+    private void Die()
+    {
+        StopAllCoroutines();
+        OnEnemyDie?.Invoke(this.gameObject);
+        //_GM.AddSCore(myScore * 2);
+        //_EM.KillEnemy(this.gameObject);
+        //Destroy(this.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Projectile"))
+            Hit(collision.gameObject.GetComponent<Projectile>().damage); 
+    }
 
 }
