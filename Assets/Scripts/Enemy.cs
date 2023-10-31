@@ -14,9 +14,14 @@ public class Enemy : GameBehaviour
     public float moveDistance = 1000;
     float baseSpeed = 1f;
     public float mySpeed = 1f;
+    
     int baseHealth = 100;
+    int maxHealth;
     public int enemyHealth;
-    public int myScore; 
+    public int myScore;
+    EnemyHealthBar healthBar;
+
+    public string myName;
 
     [Header("AI")] 
     public EnemyType myType;
@@ -29,19 +34,20 @@ public class Enemy : GameBehaviour
 
     void Start()
     {
- 
+        healthBar = GetComponentInChildren<EnemyHealthBar>();
+        SetName(_EM.GetEnemyName());
 
         switch (myType)
         {
             case EnemyType.OneHand:
-                enemyHealth = baseHealth;
+                enemyHealth = maxHealth = baseHealth;
                 mySpeed = baseSpeed;
                 myPatrol = PatrolType.Linear;
                 myScore = 100;
                 break;
 
             case EnemyType.TwoHand:
-                enemyHealth = baseHealth * 2;
+                enemyHealth = maxHealth = baseHealth * 2;
                 mySpeed = baseSpeed;
                 myPatrol = PatrolType.Random;
                 myScore = 170;
@@ -49,7 +55,7 @@ public class Enemy : GameBehaviour
 
 
             case EnemyType.Archer:
-                enemyHealth = baseHealth * 3;
+                enemyHealth = maxHealth = baseHealth * 3;
                 mySpeed = baseSpeed * 2;
                 myPatrol = PatrolType.Loop;
                 myScore = 270;
@@ -59,6 +65,7 @@ public class Enemy : GameBehaviour
         SetUpAI();
     }
 
+  
     void SetUpAI()
     {
         startPos = Instantiate(new GameObject(), transform.position, transform.rotation).transform;
@@ -71,6 +78,12 @@ public class Enemy : GameBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
             StopAllCoroutines();
+    }
+
+    public void SetName(string _name)
+    {
+        name = _name;
+        healthBar.SetName(_name); 
     }
 
     IEnumerator Move()
@@ -124,6 +137,7 @@ public class Enemy : GameBehaviour
 
         _GM.AddSCore(myScore);
         enemyHealth -= _damage;
+        healthBar.UpdateHealthBar(enemyHealth, maxHealth);
         ScaleObject(this.gameObject, transform.localScale * 1.5f);
         if (enemyHealth <= 0)
         {

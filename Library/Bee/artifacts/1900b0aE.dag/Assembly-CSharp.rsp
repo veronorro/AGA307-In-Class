@@ -351,6 +351,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/Doors.cs"
 "Assets/Scripts/Enemy.cs"
+"Assets/Scripts/EnemyHealthBar.cs"
 "Assets/Scripts/EnemyManager.cs"
 "Assets/Scripts/FiringPoint.cs"
 "Assets/Scripts/GameBehaviour.cs"
@@ -359,8 +360,10 @@
 "Assets/Scripts/PlayerMovement.cs"
 "Assets/Scripts/Projectile.cs"
 "Assets/Scripts/Singleton.cs"
+"Assets/Scripts/Timer.cs"
 "Assets/Scripts/TriggerEvents.cs"
 "Assets/Scripts/TriggerPad.cs"
+"Assets/Scripts/UIManager.cs"
 -langversion:9.0
 
 /deterministic

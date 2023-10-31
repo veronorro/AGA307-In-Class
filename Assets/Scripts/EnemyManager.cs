@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum EnemyType
@@ -53,7 +54,6 @@ public class EnemyManager : Singleton<EnemyManager>
     }
 
 
-
     /// <summary>
     /// Spawns enemy at every spawn point
     /// </summary>
@@ -65,6 +65,8 @@ public class EnemyManager : Singleton<EnemyManager>
             GameObject enemy = Instantiate(enemyTypes[rnd], spawnPoints[i].position, spawnPoints[i].rotation);
         }
         enemies.Add(enemy);
+        ShowEnemyCount();
+        //SetEnemyName(enemy);
     }
    
     /// <summary>
@@ -75,7 +77,8 @@ public class EnemyManager : Singleton<EnemyManager>
         int rnd = Random.Range(0, enemyTypes.Length);
         Instantiate(enemyTypes[rnd], spawnPoints[rnd].position, spawnPoints[rnd].rotation);
         enemies.Add(enemy);
-        ShowEnemyCount(); 
+        ShowEnemyCount();
+        //SetEnemyName(enemy);
     }
 
     /// <summary>
@@ -90,6 +93,8 @@ public class EnemyManager : Singleton<EnemyManager>
             int rnd = Random.Range(0, enemyTypes.Length);
             Instantiate(enemyTypes[rnd], spawnPoints[rnd].position, spawnPoints[rnd].rotation);
             enemies.Add(enemy);
+            ShowEnemyCount();
+            //SetEnemyName(enemy);
             yield return new WaitForSeconds(2);
         }
         
@@ -100,7 +105,21 @@ public class EnemyManager : Singleton<EnemyManager>
     /// </summary>
     void ShowEnemyCount()
     {
-        print(enemies.Count);
+        _UI.UpdateEnemyCount(enemies.Count);
+    }
+
+    /// <summary>
+    /// Sets the enemy name
+    /// </summary>
+    /// <param name="_enemy"></param>
+    //void SetEnemyName(GameObject _enemy)
+    //{
+    //    _enemy.GetComponent<Enemy>().SetName(enemyNames[Random.Range(0, enemyNames.Length)]);
+    //}
+
+    public string GetEnemyName()
+    {
+        return enemyNames[Random.Range(0, enemyNames.Length)];
     }
 
     /// <summary>
@@ -115,6 +134,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
         Destroy(_enemy);
         enemies.Remove(_enemy);
+        ShowEnemyCount();
     }
 
     /// <summary>
@@ -129,7 +149,7 @@ public class EnemyManager : Singleton<EnemyManager>
         {
             KillEnemy(enemies[i]);
         }
-        
+        ShowEnemyCount();
     }
 
     void KillSpecificEnemy(string _condition)
@@ -139,6 +159,7 @@ public class EnemyManager : Singleton<EnemyManager>
             if (enemies[i].name.Contains(_condition))
                 KillEnemy(enemies[i]);
         }
+        ShowEnemyCount();
     }
  
     /// <summary>
