@@ -233,6 +233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 417646}
   - component: {fileID: 13773204}
+  - component: {fileID: 9218712252418669336}
   m_Layer: 0
   m_Name: skeleton_mesh
   m_TagString: Untagged
@@ -332,6 +333,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.05528146, y: 0.038024798, z: -0.00000025331974}
     m_Extent: {x: 0.7589987, y: 0.13515224, z: 0.27464455}
   m_DirtyAABB: 0
+--- !u!136 &9218712252418669336
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108698}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.27464488
+  m_Height: 1.5179976
+  m_Direction: 1
+  m_Center: {x: 0.00000014679648, y: 0.7561307, z: 0.02436784}
 --- !u!1 &110586
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,6 +842,8 @@ GameObject:
   - component: {fileID: 461210}
   - component: {fileID: 3337786}
   - component: {fileID: 2365288}
+  - component: {fileID: 8464383570340514826}
+  - component: {fileID: 5235873845516898650}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -899,6 +916,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &8464383570340514826
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136750}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.06
+  m_Height: 0.87
+  m_Direction: 2
+  m_Center: {x: -0.03, y: 0.0000030227168, z: 0.11}
+--- !u!114 &5235873845516898650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c57213a17710384ba2080e9ffae5fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &138828
 GameObject:
   m_ObjectHideFlags: 0
@@ -2220,7 +2263,6 @@ GameObject:
   - component: {fileID: 449256}
   - component: {fileID: 9520798}
   - component: {fileID: -4627291741355560363}
-  - component: {fileID: 8770374923015266994}
   m_Layer: 0
   m_Name: Skeleton_C
   m_TagString: Untagged
@@ -2258,7 +2300,7 @@ Animator:
   m_GameObject: {fileID: 188982}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 20300ac630e0fcd4dbab63a9b39cdafa, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0d66701f6c062b2439cb0a650f4c1fe8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2283,25 +2325,12 @@ MonoBehaviour:
   myPatrol: 0
   moveDistance: 1000
   mySpeed: 3
+  myAttackRange: 2
   enemyHealth: 0
   myScore: 0
   myName: 
   myType: 0
   moveToPos: {fileID: 0}
---- !u!136 &8770374923015266994
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188982}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.18
-  m_Height: 1.58
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1 &189416
 GameObject:
   m_ObjectHideFlags: 0

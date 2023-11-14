@@ -1360,6 +1360,8 @@ GameObject:
   - component: {fileID: 444136}
   - component: {fileID: 3345740}
   - component: {fileID: 2324164}
+  - component: {fileID: 4833119144123294326}
+  - component: {fileID: 2670962781277172347}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -1432,6 +1434,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &4833119144123294326
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.11
+  m_Height: 0.79
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.0000030227168, z: 0.11}
+--- !u!114 &2670962781277172347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c57213a17710384ba2080e9ffae5fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &160406
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,7 +2473,7 @@ Animator:
   m_GameObject: {fileID: 197444}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 20300ac630e0fcd4dbab63a9b39cdafa, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0d66701f6c062b2439cb0a650f4c1fe8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2470,6 +2498,7 @@ MonoBehaviour:
   myPatrol: 0
   moveDistance: 1000
   mySpeed: 3
+  myAttackRange: 2
   enemyHealth: 0
   myScore: 0
   myName: 

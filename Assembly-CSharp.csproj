@@ -57,11 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\FiringPoint.cs" />
+    <Compile Include="Assets\Scripts\EnemyHealthBar.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\TriggerEvents.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Timer.cs" />
     <Compile Include="Assets\Scripts\GameBehaviour.cs" />
     <Compile Include="Assets\Scripts\Doors.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
@@ -69,8 +71,8 @@
     <Compile Include="Assets\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Scripts\TriggerPad.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
-    <Compile Include="Assets\Scripts\Timer.cs" />
-    <Compile Include="Assets\Scripts\EnemyHealthBar.cs" />
+    <Compile Include="Assets\Scripts\Target.cs" />
+    <Compile Include="Assets\Scripts\EnemyWeapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

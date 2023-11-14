@@ -795,6 +795,8 @@ GameObject:
   - component: {fileID: 486510}
   - component: {fileID: 3307786}
   - component: {fileID: 2346560}
+  - component: {fileID: 6736813489854411847}
+  - component: {fileID: 5424321407447435184}
   m_Layer: 0
   m_Name: TwoHanded_Axe
   m_TagString: Untagged
@@ -867,6 +869,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6736813489854411847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c57213a17710384ba2080e9ffae5fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &5424321407447435184
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.09
+  m_Height: 1.09
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.0000030227168, z: 0.09}
 --- !u!1 &123098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,7 +1444,7 @@ Animator:
   m_GameObject: {fileID: 154340}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 20300ac630e0fcd4dbab63a9b39cdafa, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0d66701f6c062b2439cb0a650f4c1fe8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1441,6 +1469,7 @@ MonoBehaviour:
   myPatrol: 2
   moveDistance: 1000
   mySpeed: 3
+  myAttackRange: 2
   enemyHealth: 0
   myScore: 0
   myName: 

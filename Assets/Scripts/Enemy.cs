@@ -14,6 +14,9 @@ public class Enemy : GameBehaviour
     public float moveDistance = 1000;
     float baseSpeed = 1f;
     public float mySpeed = 1f;
+
+    public float myAttackRange = 2;
+    public int myDamage = 20; 
     
     int baseHealth = 100;
     int maxHealth;
@@ -31,9 +34,11 @@ public class Enemy : GameBehaviour
     bool reverse;
     int patrolPoint = 0;            //needed for linear patrol movement
 
+    Animator anim;
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         healthBar = GetComponentInChildren<EnemyHealthBar>();
         SetName(_EM.GetEnemyName());
 
@@ -44,6 +49,7 @@ public class Enemy : GameBehaviour
                 mySpeed = baseSpeed;
                 myPatrol = PatrolType.Linear;
                 myScore = 100;
+                myDamage = 20;
                 break;
 
             case EnemyType.TwoHand:
@@ -51,6 +57,7 @@ public class Enemy : GameBehaviour
                 mySpeed = baseSpeed;
                 myPatrol = PatrolType.Random;
                 myScore = 170;
+                myDamage = 30;
                 break;
 
 
@@ -59,13 +66,15 @@ public class Enemy : GameBehaviour
                 mySpeed = baseSpeed * 2;
                 myPatrol = PatrolType.Loop;
                 myScore = 270;
+                myDamage = 40;
                 break;
         }
 
         SetUpAI();
+        if(GetComponentInChildren<EnemyWeapon>() != null)
+        GetComponentInChildren<EnemyWeapon>().damage = myDamage;
     }
 
-  
     void SetUpAI()
     {
         startPos = Instantiate(new GameObject(), transform.position, transform.rotation).transform;
@@ -108,12 +117,25 @@ public class Enemy : GameBehaviour
 
         while (Vector3.Distance(transform.position, moveToPos.position) > 0.3f)
         {
+            if(Vector3.Distance(transform.position, _PL.transform.position) < myAttackRange)
+            {
+                StopAllCoroutines();
+                StartCoroutine(Attack());
+                yield break;
+            }
             transform.position = Vector3.MoveTowards(transform.position, moveToPos.position, Time.deltaTime * mySpeed);
             yield return null;
         }
 
         yield return new WaitForSeconds(1);
         StartCoroutine(Move()); 
+    }
+
+    IEnumerator Attack()
+    {
+        PlayAnimation("Attack");
+        yield return new WaitForSeconds(1);
+        StartCoroutine(Move());
     }
 
     /*
@@ -138,7 +160,9 @@ public class Enemy : GameBehaviour
         _GM.AddSCore(myScore);
         enemyHealth -= _damage;
         healthBar.UpdateHealthBar(enemyHealth, maxHealth);
-        ScaleObject(this.gameObject, transform.localScale * 1.5f);
+        //ScaleObject(this.gameObject, transform.localScale * 1.5f);
+
+
         if (enemyHealth <= 0)
         {
             Die();
@@ -146,6 +170,8 @@ public class Enemy : GameBehaviour
         }
         else
         {
+
+            PlayAnimation("Hit");
             OnEnemyHit?.Invoke(this.gameObject);
           //_GM.AddSCore(myScore);
         }
@@ -154,6 +180,8 @@ public class Enemy : GameBehaviour
 
     private void Die()
     {
+        GetComponent<Collider>().enabled = false;
+        PlayAnimation("Die");
         StopAllCoroutines();
         OnEnemyDie?.Invoke(this.gameObject);
         //_GM.AddSCore(myScore * 2);
@@ -165,6 +193,12 @@ public class Enemy : GameBehaviour
     {
         if (collision.collider.CompareTag("Projectile"))
             Hit(collision.gameObject.GetComponent<Projectile>().damage); 
+    }
+
+    void PlayAnimation(string _animationName)
+    {
+        int rnd = UnityEngine.Random.Range(1, 4);
+        anim.SetTrigger(_animationName + rnd);
     }
 
 }

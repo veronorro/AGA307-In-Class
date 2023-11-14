@@ -16,12 +16,19 @@ public class Projectile : MonoBehaviour
        //Check if objecr tagged Target
        if(collision.gameObject.CompareTag("Target"))
        {
+            if (collision.gameObject.GetComponent<Target>() != null)
+            {
+                collision.gameObject.GetComponent<Target>().Hit();
+            }
+
+
+
             //Change colour of target when hit
-            collision.gameObject.GetComponent<Renderer>().material.color = Color.red;
+            //collision.gameObject.GetComponent<Renderer>().material.color = Color.red;
             //Destroy target after 1 second
-            Destroy(collision.gameObject, 1);
+            //Destroy(collision.gameObject, 1);
            //Destroy this object
-           Destroy(this.gameObject);
+           //Destroy(this.gameObject);
        }
 
         
