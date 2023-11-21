@@ -108,8 +108,8 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentSlope: 60
+    agentClimb: 0.8
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 33bcca5a3f5fd29499cecd1628544c88, type: 2}
 --- !u!1 &12666873
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,10 +576,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095802a19750a8a48a2aa50c2466edcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroy: 0
   controller: {fileID: 360421120}
   speed: 10
   gravity: -9.81
   jumpHeight: 2
+  health: 100
   groundCheck: {fileID: 285362570}
   groundDistance: 0.4
   groundMask:
@@ -599,7 +601,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.8
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -1598,7 +1600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7530333486480976962, guid: 1c236994a7a8f4d4f95359f2f5c05744, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.73
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 7530333486480976962, guid: 1c236994a7a8f4d4f95359f2f5c05744, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2689,6 +2691,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 908172831450305968, guid: cd32442e201a7a145a8f67aa484acd4d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 908172831483299004, guid: cd32442e201a7a145a8f67aa484acd4d, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -3336,6 +3342,10 @@ PrefabInstance:
     - target: {fileID: 7773228242018446022, guid: cd32442e201a7a145a8f67aa484acd4d, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790821030112012627, guid: cd32442e201a7a145a8f67aa484acd4d, type: 3}
+      propertyPath: m_Convex
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455653044883200361, guid: cd32442e201a7a145a8f67aa484acd4d, type: 3}
       propertyPath: m_Layer

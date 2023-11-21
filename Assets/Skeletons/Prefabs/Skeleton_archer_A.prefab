@@ -491,9 +491,10 @@ GameObject:
   - component: {fileID: 9595696}
   - component: {fileID: -6051287776556001837}
   - component: {fileID: -7644824773363919967}
+  - component: {fileID: 6588609378734959495}
   m_Layer: 0
   m_Name: Skeleton_archer_A
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -551,11 +552,15 @@ MonoBehaviour:
   myPatrol: 1
   moveDistance: 1000
   mySpeed: 3
+  myDamage: 20
   enemyHealth: 0
   myScore: 0
   myName: 
   myType: 2
   moveToPos: {fileID: 0}
+  attackDistance: 2
+  detectTime: 5
+  detectDistance: 10
 --- !u!136 &-7644824773363919967
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -570,6 +575,28 @@ CapsuleCollider:
   m_Height: 1.58
   m_Direction: 1
   m_Center: {x: 0, y: 0.7, z: 0}
+--- !u!195 &6588609378734959495
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133616}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &134496
 GameObject:
   m_ObjectHideFlags: 0
