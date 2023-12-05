@@ -357,6 +357,8 @@
 "Assets/Scripts/EnemyWeapon.cs"
 "Assets/Scripts/FiringPoint.cs"
 "Assets/Scripts/GameBehaviour.cs"
+"Assets/Scripts/GameData.cs"
+"Assets/Scripts/GameDataManager.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/MouseLook.cs"
 "Assets/Scripts/PlayerMovement.cs"

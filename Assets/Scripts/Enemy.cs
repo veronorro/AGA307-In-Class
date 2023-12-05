@@ -289,8 +289,8 @@ public class Enemy : GameBehaviour
         StopAllCoroutines();
         OnEnemyDie?.Invoke(this.gameObject);
 
-        //_GM.AddSCore(myScore * 2);
-        //_EM.KillEnemy(this.gameObject);
+        _GM.AddSCore(myScore * 2);
+        _EM.KillEnemy(this.gameObject);
         //Destroy(this.gameObject);
     }
 
